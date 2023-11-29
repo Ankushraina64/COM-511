@@ -135,3 +135,31 @@ for i in range(row):
     for j in range(col):
         print("*", end=" ")
     print()
+
+# 10.WAP to calculate area of circle then inherit it to find area and volume of cylinder 
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius**2
+
+class Cylinder(Circle):
+    def __init__(self, radius, height):
+        super().__init__(radius)
+        self.height = height
+
+    def area(self):
+        circle_area = super().area()
+        lateral_area = 2 * 3.14 * self.radius * self.height
+        return 2 * circle_area + lateral_area
+
+    def volume(self):
+        return super().area() * self.height
+
+obj = Circle(5)
+print(f"Circle Area: {obj.area()}")
+
+obj1 = Cylinder(6, 9)
+print(f"Cylinder Area: {obj1.area()}")
+print(f"Cylinder Volume: {obj1.volume()}")
